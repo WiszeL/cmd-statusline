@@ -1,0 +1,9 @@
+{
+	"name": "cmd-statusline",
+	"version": "1.0.0",
+	"description": "Command Code mod: live status line with model, effort, context window bar, cache hit/miss, cumulative output and cost.",
+	"license": "MIT",
+	"commandcode": {
+		"mods": ["./statusline.ts"]
+	}
+}
