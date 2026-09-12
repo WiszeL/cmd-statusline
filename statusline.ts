@@ -60,6 +60,11 @@ function fmtTokens(n: number): string {
 	return `${n}`;
 }
 
+/** Share of the current prompt served from cache. */
+function hitPct(turn: Turn): number {
+	return turn.context > 0 ? Math.round((turn.hit / turn.context) * 100) : 0;
+}
+
 function fmtCost(usd: number): string {
 	if (usd === 0) return '$0';
 	if (usd < 0.01) return `$${usd.toFixed(4)}`;
@@ -290,7 +295,7 @@ export default function (cmd: ModApi): void {
 			current ? shortName(current) : DIM + '—' + RESET,
 			effort || DIM + '—' + RESET,
 			`[${bar(pct)}] ${fmtTokens(turn.context)}/${fmtTokens(max)} ${Math.round(pct * 100)}%`,
-			`In: ${fmtTokens(totals.in)} (Miss: ${fmtTokens(turn.miss)} ; Hit: ${fmtTokens(turn.hit)})`,
+			`In: ${fmtTokens(totals.in)} (Miss: ${fmtTokens(turn.miss)} ; Hit: ${fmtTokens(turn.hit)} ${hitPct(turn)}%)`,
 			`Out: ${fmtTokens(totals.out)}`,
 			fmtCost(totals.cost),
 		];

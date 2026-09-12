@@ -3,14 +3,14 @@
 A [Command Code](https://commandcode.ai/docs/mods) mod that paints a live status line under the input panel.
 
 ```
-deepseek-v4.1-flash | high | [████████░░] 124K/1M 12% | In: 1.2M (Miss: 34K ; Hit: 90K) | Out: 1,840 | $0.014
+deepseek-v4.1-flash | high | [████████░░] 124K/1M 12% | In: 1.2M (Miss: 34K ; Hit: 90K 73%) | Out: 1,840 | $0.014
 ```
 
 - **model** — short name of the live model (from the session transcript, so it follows `/model` and mod-driven switches)
 - **effort** — the effort level of the latest request
 - **context** — 10-char bar, current / max, and percentage of the model's context window (current turn)
 - **in** — cumulative input tokens for the session, with the current turn's miss/hit split
-- **miss / hit** — prompt tokens not served from cache vs. served from cache (includes cache writes)
+- **miss / hit** — prompt tokens not served from cache vs. served from cache (includes cache writes), plus the hit share of the current prompt
 - **out** — cumulative output tokens for the session
 - **cost** — cumulative cost (provider-reported, or estimated from built-in rates)
 
